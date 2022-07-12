@@ -12,10 +12,7 @@ export const Main = () => {
   }, []);
 
   const handleSubmit = async (e) => {
-    if (e && e.preventDefault) {
-      e.preventDefault();
-    }
-
+    e.preventDefault();
     if (todo) {
       await postData({ todo });
       setTodo("");
