@@ -16,6 +16,8 @@ const Auth = () => {
   const [view, setView] = useState("login");
 
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingV, setIsLoadingV] = useState(false);
+  const [isLoadingS, setIsLoadingS] = useState(false);
 
   const navigate = useNavigate();
 
@@ -42,7 +44,7 @@ const Auth = () => {
         setIsLoading(false);
         return;
       }
-      console.log(loginForm);
+      // console.log(loginForm);
       const { data } = await LoginAPI(loginForm);
       if (data.status !== "ok") {
         toast.error(data.error);
@@ -81,7 +83,7 @@ const Auth = () => {
         setIsLoading(false);
         return;
       }
-      console.log(registerForm);
+      //console.log(registerForm);
       const { data } = await RegisterAPI(registerForm);
       if (data.status !== "ok") {
         toast.error(data.error);
@@ -99,29 +101,37 @@ const Auth = () => {
   };
 
   const handleEmailSendOTP = async () => {
+    setIsLoadingS(true);
     try {
-      console.log(email);
+      //console.log(email);
       const { data } = await VerifyEmailAndSendOTPAPI(email);
       if (data.status !== "ok") {
         toast.error(data.error);
+        setIsLoadingS(false);
         return;
       }
       toast.success(data.message);
+      setIsLoadingS(false);
     } catch (err) {
+      setIsLoadingS(false);
       console.log(err);
     }
   };
 
   const handleEmailVerifyOTP = async () => {
+    setIsLoadingV(true);
     try {
-      console.log(otp);
+      //console.log(otp);
       const { data } = await VerifyOTPAPI(otp);
       if (data.status !== "ok") {
+        setIsLoadingV(false);
         toast.error(data.error);
         return;
       }
       toast.success(data.message);
+      setIsLoadingV(false);
     } catch (err) {
+      setIsLoadingV(false);
       console.log(err);
     }
   };
@@ -129,7 +139,7 @@ const Auth = () => {
   const submitResetPasswordForm = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    console.log(email, password, confirmPassword);
+    //console.log(email, password, confirmPassword);
     if (!email) {
       toast.error("Enter EmailId");
       setIsLoading(false);
@@ -336,7 +346,15 @@ const Auth = () => {
                       className="input-group-text btn btn-success"
                       id="basic-addon1"
                       onClick={handleEmailSendOTP}
+                      disabled={isLoadingS}
                     >
+                      {isLoadingS ? (
+                        <span
+                          className="spinner-border spinner-border-sm me-3 fs-4"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                      ) : null}
                       Send OTP
                     </span>
                   </div>
@@ -364,7 +382,15 @@ const Auth = () => {
                       id="basic-addon1"
                       role="button"
                       onClick={handleEmailVerifyOTP}
+                      disabled={isLoadingV}
                     >
+                      {isLoadingV ? (
+                        <span
+                          className="spinner-border spinner-border-sm me-3 fs-4"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                      ) : null}
                       Verify OTP
                     </span>
                   </div>
