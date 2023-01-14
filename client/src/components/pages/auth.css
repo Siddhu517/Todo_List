@@ -1,0 +1,74 @@
+.navbar {
+  border: 1px solid red;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.AppName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.UserAuth {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.body-section {
+ /*  border: 1px solid red; */
+  height: 100%;
+  width: 100%;
+}
+
+.body-section .login-form{
+  margin-top: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.body-section .login-form .card {
+  border: 1px solid red;
+  height: 20rem;
+  width: 30rem;
+  padding: 20px;
+}
+
+
+.body-section .register-form {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-section .register-form .card{
+  border: 1px solid red;
+  height: 24rem;
+  width: 35rem;
+  padding: 20px; 
+}
+
+
+
+.body-section .reset-password-form {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-section .reset-password-form .card{
+  border: 1px solid red;
+  height: 26rem;
+  width: 35rem;
+  padding: 20px; 
+}
