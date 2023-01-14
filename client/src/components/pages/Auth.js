@@ -219,6 +219,7 @@ const Auth = () => {
       <div className="body-section">
         {view === "login" ? (
           <div className="login-form">
+            <h1 className="form_name">Login</h1>
             <div className="card">
               <div className="card-body">
                 <form className="form" onSubmit={submitLoginForm}>
@@ -274,6 +275,7 @@ const Auth = () => {
         )}
         {view === "register" ? (
           <div className="register-form">
+             <h1 className="form_name">Register</h1>
             <div className="card">
               <div className="card-body">
                 <form className="form" onSubmit={submitRegisterForm}>
@@ -330,6 +332,7 @@ const Auth = () => {
         )}
         {view === "resetPassword" ? (
           <div className="reset-password-form">
+            <h1 className="form_name">Reset_Password</h1>
             <div className="card">
               <div className="card-body">
                 <form className="form" onSubmit={submitResetPasswordForm}>

@@ -27,6 +27,12 @@
   width: 100%;
 }
 
+.body-section .login-form .form_name{
+  position: fixed;
+  top: 7rem;
+  left: 30rem;
+}
+
 .body-section .login-form{
   margin-top: 7rem;
   display: flex;
@@ -42,6 +48,11 @@
   padding: 20px;
 }
 
+.body-section .register-form .form_name{
+  position: fixed;
+  top: 5.5rem;
+  left: 27rem;
+}
 
 .body-section .register-form {
   margin-top: 5rem;
@@ -57,7 +68,11 @@
   padding: 20px; 
 }
 
-
+.body-section .reset-password-form .form_name{
+  position: fixed;
+  top: 5.5rem;
+  left: 24rem;
+}
 
 .body-section .reset-password-form {
   margin-top: 5rem;
