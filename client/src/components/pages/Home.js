@@ -12,6 +12,7 @@ import {
 
 const Home = () => {
   const [state, setState] = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [todo, setTodo] = useState("");
   //const [task, setTask] = useState(false);
@@ -23,19 +24,23 @@ const Home = () => {
   /* submit Todo */
   const handleAddTodo = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       if (!todo) {
+        setIsLoading(false);
         toast.error("Enter Todo");
         return;
       }
 
       const { data } = await addTodo(todo);
       if (data.status !== "ok") {
+        setIsLoading(false);
         toast.error(data.error);
         return;
       }
       await loadtodolist();
       setTodo("");
+      setIsLoading(false);
       toast.success(data.message);
     } catch (err) {
       console.log(err);
@@ -179,7 +184,15 @@ const Home = () => {
                 onClick={(e) => handleAddTodo(e)}
                 type="submit"
                 className="input-group-text btn btn-primary"
+                disabled={isLoading}
               >
+                {isLoading ? (
+                  <span
+                    className="spinner-border spinner-border-sm me-3 fs-4"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                ) : null}
                 Add
               </button>
             </div>
@@ -203,8 +216,8 @@ const Home = () => {
                       </div>
                       <div className="sec2 ">
                         {item.task === true ? (
-                          <span className="text" style={{fontWeight:"400"}}>
-                            <del >{item.todo}</del>
+                          <span className="text" style={{ fontWeight: "400" }}>
+                            <del>{item.todo}</del>
                           </span>
                         ) : (
                           <span className="text">{item.todo}</span>
