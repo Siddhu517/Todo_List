@@ -165,6 +165,10 @@ const Auth = () => {
         toast.success(data.message);
         setView("login");
         setIsLoading(false);
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        setOTP("");
       }
       toast.error(data.error);
       setIsLoading(false);
